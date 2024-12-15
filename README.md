@@ -54,3 +54,6 @@ In the weather.ipynb notebook, use the pandas function read_json() to load in an
 
 * Test the Workflow Commit and push the workflow to the repository. 
 
+***Automated downloads are visible in the data/weather directory***
+
+
