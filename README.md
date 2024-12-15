@@ -7,6 +7,7 @@
 ## ***Tasks***
 
 There are a total of 9 tasks, using GitHub Codespaces, captured in this Repository. They are:
+
 1. Create Directory Structure
 Using the command line, create a directory (that is, a folder) named data at the root of your repository. Inside data, create two subdirectories: timestamps and weather.
 
@@ -34,4 +35,22 @@ Create a notebook called weather.ipynb at the root of your repository. In this n
 
 9. pandas
 In your weather.ipynb notebook, use the pandas function read_json() to load in any one of the weather data files you have downloaded with your script. Examine and summarize the data. Use the information provided data.gov.ie to write a short explanation of what the data set contains.
+
+## ***Project***
+
+* Automate the weather.sh script to run daily and push the new data to the repository. The following steps will create the necessary GitHub Actions workflow:
+
+* Create a GitHub Actions Workflow: In the repository, create a folder called .github/workflows/. Inside this folder, create a file called weather-data.yml. This file will define the GitHub Actions workflow.
+
+* Run Daily at 10am: Use the schedule event with cron to set the script to run once a day at 10am. Include also the workflow_dispatch event so the workflow can be tested.
+
+* Use a Linux Virtual Machine In the workflow file, specify that a Ubuntu virtual machine should be used to run the action.
+
+* Have the workflow clone to the repository.
+
+* Add a step that runs the weather.sh script.
+
+* Commit and Push Changes Back to the Repository.
+
+* Test the Workflow Commit and push the workflow to the repository. 
 
