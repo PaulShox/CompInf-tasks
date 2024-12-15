@@ -1,0 +1,34 @@
+name: Run Weather Script
+
+on:
+  schedule:
+    - cron: "0 10 * * *" # Runs every day at 10 AM
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+permissions:
+  contents: write # Allows pushing changes to the repository
+
+jobs:
+  run-weather-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }} # Ensures the workflow has proper permissions
+
+    - name: Run Weather Script
+      run: |
+        chmod +x weather.sh
+        ./weather.sh
+
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Automated update by weather script"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
